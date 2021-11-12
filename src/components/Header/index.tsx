@@ -1,9 +1,10 @@
-import React from 'react'
+import React  from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Box } from '@material-ui/core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import NavLink from '../NavLink'
+import {LoginView} from './Login/Login'
+import { Signup } from './Signup/Signup'
+import { HashRouter as Router, Route, Switch, useLocation } from 'react-router-dom'
 
 interface IHeaderProps {
 	text?: string
@@ -46,7 +47,6 @@ const TestDropdownBox = () => <Box>test dropdown</Box>
 
 const Header: React.FC<IHeaderProps> = () => {
 	const classes = useStyles({})
-
 	return (
 		<Box className={classes.headerWrap}>
 			<Box className={classes.logo} />
@@ -55,9 +55,17 @@ const Header: React.FC<IHeaderProps> = () => {
 				<NavLink text='Finding a Tutor' link='/#/tutors' />
 				<NavLink text='Account' link='/#/account' />
 			</ul>
-			<Box className={classes.liWrap}>
-				<FontAwesomeIcon icon={faUserCircle} className={classes.userIcon} />
-				<FontAwesomeIcon icon={['far', 'user-circle']} className={classes.userIcon} />
+			<Box className={classes.userIcon}>
+				<LoginView />
+				{/* <Router>
+				<Route path='/'>
+				
+				</Route>
+				<Route path='/Register'>
+				<Signup />
+				</Route>
+				</Router> */}
+				
 			</Box>
 		</Box>
 	)
