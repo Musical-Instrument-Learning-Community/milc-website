@@ -1,9 +1,11 @@
 $primary-color:#090761;
 
-#contained-modal-title-vcenter{
-    font-size: 1.2rem;
-    padding: 0.5rem;
+.userName{
+    font-weight: bold;
+    color: $primary-color;
 }
+
+
 .modal-content {
     border: 0;
 }
@@ -18,8 +20,11 @@ border: 2px solid lightgray;
 border-radius: 4px;
 width: 80%;
 }
-.signupOption{
-    padding: 2rem 0;    
+.option{
+    padding: 2rem 0; 
+    color: $primary-color;
+    text-decoration:underline;
+    
 }
 a{
 color: $primary-color;    
@@ -28,5 +33,6 @@ button{
     color: white;
     background-color: $primary-color; 
     border-radius: .25rem;
-    padding: 0.5rem 2rem;   
+    padding: 0.5rem 2rem;  
+    width: 8rem; 
 }

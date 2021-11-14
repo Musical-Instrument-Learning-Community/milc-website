@@ -2,8 +2,7 @@ import React  from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Box } from '@material-ui/core'
 import NavLink from '../NavLink'
-import {LoginView} from './Login/Login'
-import { Signup } from './Signup/Signup'
+import {LoginView} from '../userManagment/index'
 import { HashRouter as Router, Route, Switch, useLocation } from 'react-router-dom'
 
 interface IHeaderProps {
