@@ -8,6 +8,7 @@ on:
 
 env:
   AWS_REGION: ap-southeast-2
+  my_distribution_id: E3TYJ8V3ZY1B0O
 
 jobs:
   build-deploy:
@@ -52,7 +53,11 @@ jobs:
           aws -cli --version
           ls
           aws s3 cp ./build/ s3://${{ secrets.S3BUCKETNAME }} --recursive
-        # aws s3api get-bucket-website --bucket {{ secrets.S3BUCKETNAME }}
+        # aws s3api get-bucket-website --bucket ${{ secrets.S3BUCKETNAME }}
       
+      - name: invalidate cloudfront
+        # uses: actions/aws@v2.0.1
+        run: aws cloudfront create-invalidation --distribution-id ${{ env.my_distribution_id }} --paths "/*"
+
       # - name: output aws s3 endpoint
       #   run: echo "http://{{ secrets.S3BUCKETNAME }}.s3-website-${{ env.AWS_REGION }}amazonaws.com/
