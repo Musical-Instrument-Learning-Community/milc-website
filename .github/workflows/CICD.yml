@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 env:
-  s3BucketName: test
+  AWS_REGION: ap-southeast-2
 
 jobs:
   build-deploy:
@@ -47,8 +47,12 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: upload to s3
-        uses: actions/aws@v2.0.1
-        # run: npm test
+        # uses: actions/aws@v2.0.1
         run: |
-          aws s3 cp ../build/ s3://$s3BucketName --recursive
-          
+          aws -cli --version
+          ls
+          aws s3 cp ./build/ s3://${{ secrets.S3BUCKETNAME }} --recursive
+        # aws s3api get-bucket-website --bucket {{ secrets.S3BUCKETNAME }}
+      
+      # - name: output aws s3 endpoint
+      #   run: echo "http://{{ secrets.S3BUCKETNAME }}.s3-website-${{ env.AWS_REGION }}amazonaws.com/
