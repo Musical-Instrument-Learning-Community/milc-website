@@ -21,6 +21,7 @@ export const SignupForm: React.FC<SignupFormProps> = ({ switchToSign, switchConf
           <Offcanvas.Title>Join in MILC now!</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
+        <form>
             <div className="loginLabel">Username *</div>
             <input className='username'></input>
             <div className="loginLabel">Email *</div>
@@ -31,7 +32,8 @@ export const SignupForm: React.FC<SignupFormProps> = ({ switchToSign, switchConf
                 Aleady have an account?
                 Log in now
             </div>
-            <button  className='loginBtn' onClick={switchConfirmationView}>Sign up</button>
+            <button type="submit" className='loginBtn' onClick={switchConfirmationView}>Sign up</button>
+        </form>
         </Offcanvas.Body>
         </div>
     )
