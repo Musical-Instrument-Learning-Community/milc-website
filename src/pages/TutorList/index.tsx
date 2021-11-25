@@ -30,9 +30,32 @@ const TutorCard: React.FunctionComponent<TutorCardProps> = ({ key, info }) => {
 		</div>
 	)
 }
+interface TutorCardsProps{
+	filter:string 
+}
 
-const TutorCards: React.FunctionComponent = () => {
-	const cards = data.map((item:TutorInfo) => {
+const TutorCards: React.FunctionComponent<TutorCardsProps> = ({ filter }) => {
+	const filterItem = filter;
+	const TutorData = () => {
+        switch(filterItem){
+            case'ByName':
+                return  data.sort((a, b) => a.name.localeCompare(b.name))
+            case 'ByRate':
+                return  data.sort(function (a, b) {
+					return (b.rate - a.rate)
+				  });
+
+            case 'ByPrice':
+                return data.sort(function (a, b) {
+					return (b.price - a.price)
+				  });
+
+            default:
+                return data.sort((a, b) => a.name.localeCompare(b.name))
+        }
+    }
+
+	const cards = TutorData().map((item:TutorInfo) => {
 		// eslint-disable-next-line react/jsx-key
 		return  <TutorCard   key={item.name} info={item} />
 
@@ -52,7 +75,7 @@ export default function TutorList() {
 			<div className='Subtitle'>Tutor List</div>
 			<div className='intro'>Discover Your Perfect Private Tutor in Australia</div>
 			<FilterBar/>
-			<TutorCards />
+			<TutorCards  filter = 'ByName'/>
 		</>
 	)
 }

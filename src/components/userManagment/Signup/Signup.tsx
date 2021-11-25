@@ -28,6 +28,8 @@ export const SignupForm: React.FC<SignupFormProps> = ({ switchToSign, switchConf
             <input className='username'></input>
             <div className="loginLabel"> Password *</div>
             <input className='password' type="password"></input>
+            <div className="loginLabel"> Please enter the password again *</div>
+            <input className='password' type="password"></input>
             <div className="option" onClick={handleContentChange}>
                 Aleady have an account?
                 Log in now
